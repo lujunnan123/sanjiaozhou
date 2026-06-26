@@ -69,11 +69,11 @@
                     <!-- 枪械皮肤多选 -->
                     <div class="full-width category-box">
                         <h3>🔫 枪械皮肤 (勾选拥有的)</h3>
-                        <div class="checkbox-group" id="gunCheckboxGroup" v-for="weaponGroup in weaponArr" >
+                        <div class="checkbox-group" id="gunCheckboxGroup" v-for="weaponGroup in weaponArr">
                             <h4>{{ weaponGroup[0] }}</h4>
                             <el-checkbox-group v-model="gunList" class="checkbox-group">
                                 <div v-for="(p, index) in weaponGroup" :key="p" class="checkbox-item">
-                                   
+
                                     <el-checkbox :value="p" size="large">{{ p }}</el-checkbox>
                                 </div>
                             </el-checkbox-group>
@@ -88,7 +88,10 @@
             <button class="return-btn" id="copyButton" @click="copyText">复制文本</button>
             <button class="return-btn" id="returnBtn" @click="resetHandle">⟲ 重置</button>
         </div>
+        
+        <!-- 回到顶部组件 -->
     </div>
+    <el-backtop :visibility-height="300" />
 </template>
 <script setup>
 import { ref, reactive, computed } from 'vue';
@@ -102,38 +105,38 @@ const charaterList = ref([]) // 选中人物列表
 const gunList = ref([]) // 选中枪皮列表
 
 const knifeArr = ref([
-    { name: '近战武器-暗星', name1: '近战-暗星', price: 320, picUrl: new URL('../images/knife/anxing.png', import.meta.url).href },
-    { name: '近战武器-北极星', name1: '近战-北极星', price: 610, picUrl: new URL('../images/knife/beijixing.png', import.meta.url).href },
-    { name: '近战武器-信条', name1: '近战-信条', price: 350, picUrl: new URL('../images/knife/xintiao.png', import.meta.url).href },
-    { name: '近战武器-黑海', name1: '近战-黑海', price: 500, picUrl: new URL('../images/knife/heihai.png', import.meta.url).href },
-    { name: '近战武器-影锋', name1: '近战-影锋', price: 420, picUrl: new URL('../images/knife/yingfeng.png', import.meta.url).href },
-    { name: '近战武器-怜悯', name1: '近战-怜悯', price: 380, picUrl: new URL('../images/knife/lianmin.png', import.meta.url).href },
-    { name: '近战武器-龙牙', name1: '近战-龙牙', price: 280, picUrl: new URL('../images/knife/longya.png', import.meta.url).href },
-    { name: '近战武器-赤枭', name1: '近战-赤枭', price: 420, picUrl: new URL('../images/knife/chixiao.png', import.meta.url).href },
-    { name: '近战武器-电锯惊魂', name1: '近战-电锯惊魂', price: 100, picUrl: new URL('../images/knife/dianju.png', import.meta.url).href },
-    { name: '近战武器-坠星者', name1: '近战-坠星者', price: 600, picUrl: new URL('../images/knife/zhuixingzhe.png', import.meta.url).href },
-    { name: '近战武器-尼泊尔-挽歌', name1: '近战-尼泊尔-挽歌', price: 600, picUrl: new URL('../images/knife/niboer.png', import.meta.url).href },
+    { name: '近战武器-暗星', name1: '近战-暗星', price: 320, picUrl: new URL('@/assets/images/knife/anxing.png', import.meta.url).href },
+    { name: '近战武器-北极星', name1: '近战-北极星', price: 610, picUrl: new URL('@/assets/images/knife/beijixing.png', import.meta.url).href },
+    { name: '近战武器-信条', name1: '近战-信条', price: 350, picUrl: new URL('@/assets/images/knife/xintiao.png', import.meta.url).href },
+    { name: '近战武器-黑海', name1: '近战-黑海', price: 500, picUrl: new URL('@/assets/images/knife/heihai.png', import.meta.url).href },
+    { name: '近战武器-影锋', name1: '近战-影锋', price: 420, picUrl: new URL('@/assets/images/knife/yingfeng.png', import.meta.url).href },
+    { name: '近战武器-怜悯', name1: '近战-怜悯', price: 380, picUrl: new URL('@/assets/images/knife/lianmin.png', import.meta.url).href },
+    { name: '近战武器-龙牙', name1: '近战-龙牙', price: 280, picUrl: new URL('@/assets/images/knife/longya.png', import.meta.url).href },
+    { name: '近战武器-赤枭', name1: '近战-赤枭', price: 420, picUrl: new URL('@/assets/images/knife/chixiao.png', import.meta.url).href },
+    { name: '近战武器-电锯惊魂', name1: '近战-电锯惊魂', price: 100, picUrl: new URL('@/assets/images/knife/dianju.png', import.meta.url).href },
+    { name: '近战武器-坠星者', name1: '近战-坠星者', price: 600, picUrl: new URL('@/assets/images/knife/zhuixingzhe.png', import.meta.url).href },
+    { name: '近战武器-尼泊尔-挽歌', name1: '近战-尼泊尔-挽歌', price: 600, picUrl: new URL('@/assets/images/knife/niboer.png', import.meta.url).href },
 ])
 const manArr = ref([
-    { name: '威龙凌霄戌卫', name1: '威龙-凌霄戍卫', price: 350, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('../images/Character/weilong1.png', import.meta.url).href },
-    { name: '红狼蚀金玫瑰', name1: '红狼-蚀金玫瑰', price: 320, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('../images/Character/honglang1.jpg', import.meta.url).href },
-    { name: '露娜黑天际线', name1: '露娜-黑·天际线', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('../images/Character/luna1.jpg', import.meta.url).href },
-    { name: '骇爪水墨云图', name1: '骇爪-水墨云图', price: 260, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('../images/Character/haizhua1.jpg', import.meta.url).href },
-    { name: '骇爪维什戴尔', name1: '骇爪-维什戴尔', price: 120, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('../images/Character/haizhua1.png', import.meta.url).href },
-    { name: '盅能天使午夜邮差', name1: '盅-能天使午夜邮差', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('../images/Character/gu1.png', import.meta.url).href },
-    { name: '威龙蛟龙特战队', name1: '威龙-蛟龙特战队', price: 200, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/jiaolong.png', import.meta.url).href },
-    { name: '威龙壮志凌云', name1: '威龙-壮志凌云', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/weilong1.png', import.meta.url).href },
-    { name: '威龙飞虎', name1: '威龙-飞虎', price: 350, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/weilong2.png', import.meta.url).href },
-    { name: '威龙铁面判官', name1: '威龙-铁面判官', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/tiemianpanguan.png', import.meta.url).href },
-    { name: '蜂医送葬人无题密令', name1: '蜂医-送葬人·无题密令', price: 30, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/fengyi1.png', import.meta.url).href },
-    { name: '蜂医危险物质', name1: '峰医-危险物质', price: 300, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/weixianwuzhi.png', import.meta.url).href },
-    { name: '无名夜鹰', name1: '无名-夜鹰', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/wuming1.png', import.meta.url).href },
-    { name: '露娜金牌射手', name1: '露娜-金牌射手', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/luna1.png', import.meta.url).href },
-    { name: '红狼电锯惊魂', name1: '红狼-电锯惊魂', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/honglang1.png', import.meta.url).href },
-    { name: '牧羊人街头之王', name1: '牧羊人-街头之王', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/muyangren1.png', import.meta.url).href },
-    { name: '深蓝不破誓约', name1: '深蓝-不破誓约', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/bupozhishi.png', import.meta.url).href },
-    { name: '盅-不羁人生', name1: '盅-不羁人生', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/gu1.png', import.meta.url).href },
-    { name: '露娜劳拉克劳馥', name1: '露娜劳拉克劳馥', price: 140, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('../images/Character/laola.png', import.meta.url).href },
+    { name: '威龙凌霄戍卫', name1: '威龙-凌霄戍卫', price: 350, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/weilong1.png', import.meta.url).href },
+    { name: '红狼蚀金玫瑰', name1: '红狼-蚀金玫瑰', price: 320, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/honglang1.jpg', import.meta.url).href },
+    { name: '露娜黑天际线', name1: '露娜-黑·天际线', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/luna1.jpg', import.meta.url).href },
+    { name: '骇爪水墨云图', name1: '骇爪-水墨云图', price: 260, flag: 1, ifLink: 0, ifCom: 1, picUrl:new URL('@/assets/images/Character/haizhua1.jpg', import.meta.url).href },
+    { name: '骇爪维什戴尔', name1: '骇爪-维什戴尔', price: 120, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/haizhua1.png', import.meta.url).href },
+    { name: '盅能天使午夜邮差', name1: '盅-能天使午夜邮差', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/gu1.png', import.meta.url).href },
+    { name: '威龙蛟龙特战队', name1: '威龙-蛟龙特战队', price: 200, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/jiaolong.png', import.meta.url).href },
+    { name: '威龙壮志凌云', name1: '威龙-壮志凌云', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weilong1.png', import.meta.url).href },
+    { name: '威龙飞虎', name1: '威龙-飞虎', price: 350, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weilong2.png', import.meta.url).href },
+    { name: '威龙铁面判官', name1: '威龙-铁面判官', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/tiemianpanguan.png', import.meta.url).href },
+    { name: '蜂医送葬人无题密令', name1: '蜂医-送葬人·无题密令', price: 30, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/fengyi1.png', import.meta.url).href },
+    { name: '蜂医危险物质', name1: '峰医-危险物质', price: 300, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weixianwuzhi.png', import.meta.url).href },
+    { name: '无名夜鹰', name1: '无名-夜鹰', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/wuming1.png', import.meta.url).href },
+    { name: '露娜金牌射手', name1: '露娜-金牌射手', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/luna1.png', import.meta.url).href },
+    { name: '红狼电锯惊魂', name1: '红狼-电锯惊魂', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/honglang1.png', import.meta.url).href },
+    { name: '牧羊人街头之王', name1: '牧羊人-街头之王', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/muyangren1.png', import.meta.url).href },
+    { name: '深蓝不破誓约', name1: '深蓝-不破誓约', price: 20, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/bupozhishi.png', import.meta.url).href },
+    { name: '盅-不羁人生', name1: '盅-不羁人生', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/gu1.png', import.meta.url).href },
+    { name: '露娜劳拉克劳馥', name1: '露娜劳拉克劳馥', price: 140, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/laola.png', import.meta.url).href },
 ])
 const weaponArr = reactive(
     {
@@ -180,7 +183,7 @@ const Txtopt = computed(() => {
     const knifeValue = knifeList.value.join(',')
     const charaterValue = charaterList.value.join(',')
     const gunValue = gunList.value.join(',')
-    const textContent = `总资产：${AllValue.value}M，【${iftowChange.value}】，不动资产${fixedAssets.value}M，流动资产${currentAssets.value}M，【货币】${sanjiaobi.value}三角币，刀皮拥有:${knifeValue}，人物皮肤拥有:${charaterValue}，枪械皮肤拥有:${gunValue}`;
+    const textContent = `总资产：${AllValue.value}M，不动资产${fixedAssets.value}M，流动资产${currentAssets.value}M，【货币】${sanjiaobi.value}三角币，刀皮拥有:${knifeValue}，人物皮肤拥有:${charaterValue}，枪械皮肤拥有:${gunValue}`;
     return textContent
 })
 // 重置按钮
@@ -214,6 +217,11 @@ body {
     justify-content: center;
     align-items: center;
     color: #fffcfc;
+}
+
+.page {
+    height: 100vh;
+    overflow-y: auto;
 }
 
 /* 深色背景专用输入框 */

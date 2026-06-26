@@ -1,6 +1,7 @@
 {
   "name": "SanJiaoZhou-Vue",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
@@ -10,7 +11,8 @@
     "vue": "^3.0.4"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.7",
     "@vue/compiler-sfc": "^3.0.4",
-    "vite": "^1.0.0-rc.13"
+    "vite": "^5.4.21"
   }
 }
