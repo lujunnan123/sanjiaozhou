@@ -30,13 +30,13 @@
 
 
                     <!-- 二次实名选项 -->
-                    <div class="form-item">
+                    <!-- <div class="form-item">
                         <label class="form-label">是否可二次：</label>
                         <el-radio-group v-model="iftowChange">
                             <el-radio value="可二次实名">可二次实名</el-radio>
                             <el-radio value="不可二次实名">不可二次实名</el-radio>
                         </el-radio-group>
-                    </div>
+                    </div> -->
 
 
                     <!-- 刀皮多选(全宽，因为选项较多) -->
@@ -71,7 +71,7 @@
                         <h3>🔫 枪械皮肤 (勾选拥有的)</h3>
                         <div class="checkbox-group" id="gunCheckboxGroup" v-for="weaponGroup in weaponArr" >
                             <h4>{{ weaponGroup[0] }}</h4>
-                            <el-checkbox-group v-model="charaterList" class="checkbox-group">
+                            <el-checkbox-group v-model="gunList" class="checkbox-group">
                                 <div v-for="(p, index) in weaponGroup" :key="p" class="checkbox-item">
                                    
                                     <el-checkbox :value="p" size="large">{{ p }}</el-checkbox>
@@ -180,7 +180,7 @@ const Txtopt = computed(() => {
     const knifeValue = knifeList.value.join(',')
     const charaterValue = charaterList.value.join(',')
     const gunValue = gunList.value.join(',')
-    const textContent = `总资产：${AllValue.value}M，【${iftowChange.value}】，不动资产${fixedAssets.value}M，流动资产${currentAssets.value}M，【货币】${sanjiaobi.value}三角币，刀皮拥有:${knifeValue}，人物皮肤拥有:${charaterValue}枪械皮肤拥有，枪械皮肤拥有:${gunValue}`;
+    const textContent = `总资产：${AllValue.value}M，【${iftowChange.value}】，不动资产${fixedAssets.value}M，流动资产${currentAssets.value}M，【货币】${sanjiaobi.value}三角币，刀皮拥有:${knifeValue}，人物皮肤拥有:${charaterValue}，枪械皮肤拥有:${gunValue}`;
     return textContent
 })
 // 重置按钮
