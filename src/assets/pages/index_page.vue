@@ -1,7 +1,7 @@
 <template>
     <div class="container" id="mainContainer">
         <!-- 表单区域 -->
-        <div id="formContainer">
+        <div id="formContainer" v-if="ifhidden">
             <h2>📦 三角洲账户资产快照(多选皮肤)</h2>
             <form id="assetForm">
                 <div class="form-grid" style="color:#fff">
@@ -73,7 +73,6 @@
                             <h4>{{ weaponGroup[0] }}</h4>
                             <el-checkbox-group v-model="gunList" class="checkbox-group">
                                 <div v-for="(p, index) in weaponGroup" :key="p" class="checkbox-item">
-
                                     <el-checkbox :value="p" size="large">{{ p }}</el-checkbox>
                                 </div>
                             </el-checkbox-group>
@@ -83,18 +82,21 @@
             </form>
         </div>
         <!-- 结果区域(初始隐藏) -->
-        <div id="resultContainer">
+        <div id="resultContainer" v-else>
             <text id="assetText">{{ Txtopt }}</text>
             <button class="return-btn" id="copyButton" @click="copyText">复制文本</button>
-            <button class="return-btn" id="returnBtn" @click="resetHandle">⟲ 重置</button>
+            <button class="return-btn" id="returnBtn" @click="()=>{ifhidden=!ifhidden}">返回</button>
         </div>
         
         <!-- 回到顶部组件 -->
     </div>
+    <el-button class="float-bottom-left-btn" @click="()=>{ifhidden=!ifhidden}" type="success" :icon="Check" circle />
     <el-backtop :visibility-height="300" />
 </template>
-<script setup>
+<script setup >
+import { ElButton } from 'element-plus';
 import { ref, reactive, computed } from 'vue';
+import { Check } from '@element-plus/icons-vue'
 const AllValue = ref(0) // 总资产
 const currentAssets = ref(0) // 流动资产
 const fixedAssets = ref(0) // 固定资产
@@ -103,6 +105,7 @@ const iftowChange = ref('可二次实名') // 单选框值
 const knifeList = ref([]) // 选中武器列表
 const charaterList = ref([]) // 选中人物列表
 const gunList = ref([]) // 选中枪皮列表
+const ifhidden = ref(true)
 
 const knifeArr = ref([
     { name: '近战武器-暗星', name1: '近战-暗星', price: 320, picUrl: new URL('@/assets/images/knife/anxing.png', import.meta.url).href },
@@ -125,8 +128,8 @@ const manArr = ref([
     { name: '骇爪维什戴尔', name1: '骇爪-维什戴尔', price: 120, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/haizhua1.png', import.meta.url).href },
     { name: '盅能天使午夜邮差', name1: '盅-能天使午夜邮差', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/gu1.jpg', import.meta.url).href },
     { name: '威龙飞虎', name1: '威龙-飞虎', price: 350, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weilong2.png', import.meta.url).href },
-    { name: '露娜劳拉克劳馥', name1: '露娜劳拉克劳馥', price: 140, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/laola.png', import.meta.url).href },
-    // { name: '威龙蛟龙特战队', name1: '威龙-蛟龙特战队', price: 200, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/jiaolong.png', import.meta.url).href },
+    // { name: '露娜劳拉克劳馥', name1: '露娜劳拉克劳馥', price: 140, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/laola.png', import.meta.url).href },
+    { name: '威龙蛟龙特战队', name1: '威龙-蛟龙特战队', price: 200, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/jiaolong.png', import.meta.url).href },
     // { name: '威龙壮志凌云', name1: '威龙-壮志凌云', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weilong1.png', import.meta.url).href },
     // { name: '威龙铁面判官', name1: '威龙-铁面判官', price: 100, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/tiemianpanguan.png', import.meta.url).href },
     // { name: '蜂医送葬人无题密令', name1: '蜂医-送葬人·无题密令', price: 30, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/fengyi1.png', import.meta.url).href },
@@ -217,6 +220,14 @@ body {
     justify-content: center;
     align-items: center;
     color: #fffcfc;
+}
+
+.float-bottom-left-btn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .page {
