@@ -85,15 +85,15 @@
         <div id="resultContainer" v-else>
             <text id="assetText">{{ Txtopt }}</text>
             <button class="return-btn" id="copyButton" @click="copyText">复制文本</button>
-            <button class="return-btn" id="returnBtn" @click="()=>{ifhidden=!ifhidden}">返回</button>
+            <button class="return-btn" id="returnBtn" @click="() => { ifhidden = !ifhidden }">返回</button>
         </div>
-        
+
         <!-- 回到顶部组件 -->
     </div>
-    <el-button class="float-bottom-left-btn" @click="()=>{ifhidden=!ifhidden}" type="success" :icon="Check" circle />
+    <el-button class="float-bottom-left-btn" @click="() => { ifhidden = !ifhidden }" type="success" :icon="Check" circle />
     <el-backtop :visibility-height="300" />
 </template>
-<script setup >
+<script setup>
 import { ElButton } from 'element-plus';
 import { ref, reactive, computed } from 'vue';
 import { Check } from '@element-plus/icons-vue'
@@ -124,7 +124,7 @@ const manArr = ref([
     { name: '威龙凌霄戍卫', name1: '威龙-凌霄戍卫', price: 350, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/weilong1.png', import.meta.url).href },
     { name: '红狼蚀金玫瑰', name1: '红狼-蚀金玫瑰', price: 320, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/honglang1.jpg', import.meta.url).href },
     { name: '露娜黑天际线', name1: '露娜-黑·天际线', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/luna1.jpg', import.meta.url).href },
-    { name: '骇爪水墨云图', name1: '骇爪-水墨云图', price: 260, flag: 1, ifLink: 0, ifCom: 1, picUrl:new URL('@/assets/images/Character/haizhua1.jpg', import.meta.url).href },
+    { name: '骇爪水墨云图', name1: '骇爪-水墨云图', price: 260, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/haizhua1.jpg', import.meta.url).href },
     { name: '骇爪维什戴尔', name1: '骇爪-维什戴尔', price: 120, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/haizhua1.png', import.meta.url).href },
     { name: '盅能天使午夜邮差', name1: '盅-能天使午夜邮差', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/gu1.jpg', import.meta.url).href },
     { name: '威龙飞虎', name1: '威龙-飞虎', price: 350, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/weilong2.png', import.meta.url).href },
@@ -142,20 +142,20 @@ const manArr = ref([
     // { name: '盅-不羁人生', name1: '盅-不羁人生', price: 10, flag: 0, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/gu1.png', import.meta.url).href },
 ])
 const weaponArr = reactive(
-    {
-        "AKM突击步枪-群星": ["AKM突击步枪-群星(极品S)", "AKM突击步枪-群星(极品A)", "AKM突击步枪-群星(极品B)", "AKM突击步枪-群星(极品C)", "AKM突击步枪-群星(优品S)", "AKM突击步枪-群星(优品A)", "AKM突击步枪-群星(优品B)", "AKM突击步枪-群星(优品C)"],
-        "M7系列": ["M7战斗步枪-棱镜攻势S2(极品S)", "M7战斗步枪-棱镜攻势S2(极品A)", "M7战斗步枪-棱镜攻势S2(极品B)", "M7战斗步枪-棱镜攻势S2(极品C)", "M7战斗步枪-棱镜攻势S2(优品S)", "M7战斗步枪-棱镜攻势S2(优品A)", "M7战斗步枪-棱镜攻势S2(优品B)", "M7战斗步枪-棱镜攻势S2(优品C)"],
-        "M4A1突击步枪-棱镜攻势": ["M4A1突击步枪-棱镜攻势(极品S)", "M4A1突击步枪-棱镜攻势(极品A)", "M4A1突击步枪-棱镜攻势(极品B)", "M4A1突击步枪-棱镜攻势(优品S)", "M4A1突击步枪-棱镜攻势(优品A)", "M4A1突击步枪-棱镜攻势(优品B)", "M4A1突击步枪-棱镜攻势(优品C)"],
-        "MP7冲锋枪-电玩高手S2": ["MP7冲锋枪-电玩高手S2(极品S)", "MP7冲锋枪-电玩高手S2(极品A)", "MP7冲锋枪-电玩高手S2(极品B)", "MP7冲锋枪-电玩高手S2(优品S)", "MP7冲锋枪-电玩高手S2(优品A)", "MP7冲锋枪-电玩高手S2(优品B)", "MP7冲锋枪-电玩高手S2(优品C)"],
-        "KC17突击步枪-造物纪元": ["KC17突击步枪-造物纪元(极品S)", "KC17突击步枪-造物纪元(极品A)", "KC17突击步枪-造物纪元(极品B)", "KC17突击步枪-造物纪元(优品S)", "KC17突击步枪-造物纪元(优品A)", "KC17突击步枪-造物纪元(优品B)", "KC17突击步枪-造物纪元(优品C)"],
-        "SCAR-H战斗步枪-电玩高手": ["SCAR-H战斗步枪-电玩高手(极品S)", "SCAR-H战斗步枪-电玩高手(极品A)", "SCAR-H战斗步枪-电玩高手(极品B)", "SCAR-H战斗步枪-电玩高手(优品S)", "SCAR-H战斗步枪-电玩高手(优品A)", "SCAR-H战斗步枪-电玩高手(优品B)", "SCAR-H战斗步枪-电玩高手(优品C)"],
-        "Vector冲锋枪-美杜莎": ["Vector冲锋枪-美杜莎(极品S)", "Vector冲锋枪-美杜莎(极品A)", "Vector冲锋枪-美杜莎(极品B)", "Vector冲锋枪-美杜莎(优品S)", "Vector冲锋枪-美杜莎(优品A)", "Vector冲锋枪-美杜莎(优品B)", "Vector冲锋枪-美杜莎(优品C)"],
-        "K416突击步枪-命运": ["K416突击步枪-命运(极品S)", "K416突击步枪-命运(极品A)", "K416突击步枪-命运(极品B)", "K416突击步枪-命运(优品S)", "K416突击步枪-命运(优品A)", "K416突击步枪-命运(优品B)", "K416突击步枪-命运(优品C)"],
-        "QBZ95-1突击步枪-王牌之剑": ["QBZ95-1突击步枪-王牌之剑(极品S)", "QBZ95-1突击步枪-王牌之剑(极品A)", "QBZ95-1突击步枪-王牌之剑(极品B)", "QBZ95-1突击步枪-王牌之剑(优品S)", "QBZ95-1突击步枪-王牌之剑(优品A)", "QBZ95-1突击步枪-王牌之剑(优品B)", "QBZ95-1突击步枪-王牌之剑(优品C)"],
-        "AUG突击步枪-气象感应": ["AUG突击步枪-气象感应(极品S)", "AUG突击步枪-气象感应(极品A)", "AUG突击步枪-气象感应(极品B)", "AUG突击步枪-气象感应(优品S)", "AUG突击步枪-气象感应(优品A)", "AUG突击步枪-气象感应(优品B)", "AUG突击步枪-气象感应(优品C)"],
-        "腾龙突击步枪-气象感应": ["腾龙突击步枪-气象感应(极品S)", "腾龙突击步枪-气象感应(极品A)", "腾龙突击步枪-气象感应(极品B)", "腾龙突击步枪-气象感应(优品S)", "腾龙突击步枪-气象感应(优品A)", "腾龙突击步枪-气象感应(优品B)", "腾龙突击步枪-气象感应(优品C)"],
-        "ASVal突击步枪-悬赏令": ["ASVal突击步枪-悬赏令(极品S)", "ASVal突击步枪-悬赏令(极品A)", "ASVal突击步枪-悬赏令(极品B)", "ASVal突击步枪-悬赏令(优品S)", "ASVal突击步枪-悬赏令(优品A)", "ASVal突击步枪-悬赏令(优品B)", "ASVal突击步枪-悬赏令(优品C)"],
-        "250通用机枪-电玩高手S2": ["250通用机枪-电玩高手S2(极品S)", "250通用机枪-电玩高手S2(极品A)", "250通用机枪-电玩高手S2(极品B)", "250通用机枪-电玩高手S2(优品S)", "250通用机枪-电玩高手S2(优品A)", "250通用机枪-电玩高手S2(优品B)", "250通用机枪-电玩高手S2(优品C)"],
+{
+        "AKM突击步枪-群星": ["AKM突击步枪-群星（极品S）", "AKM突击步枪-群星（极品A）", "AKM突击步枪-群星（极品B）", "AKM突击步枪-群星（极品C）", "AKM突击步枪-群星（优品S）", "AKM突击步枪-群星（优品A）", "AKM突击步枪-群星（优品B）", "AKM突击步枪-群星（优品C）"],
+        "M7系列": ["M7战斗步枪-棱镜攻势S2（极品S）", "M7战斗步枪-棱镜攻势S2（极品A）", "M7战斗步枪-棱镜攻势S2（极品B）", "M7战斗步枪-棱镜攻势S2（极品C）", "M7战斗步枪-棱镜攻势S2（优品S）", "M7战斗步枪-棱镜攻势S2（优品A）", "M7战斗步枪-棱镜攻势S2（优品B）", "M7战斗步枪-棱镜攻势S2（优品C）"],
+        "M4A1突击步枪-棱镜攻势": ["M4A1突击步枪-棱镜攻势（极品S）", "M4A1突击步枪-棱镜攻势（极品A）", "M4A1突击步枪-棱镜攻势（极品B）", "M4A1突击步枪-棱镜攻势（极品C）", "M4A1突击步枪-棱镜攻势（优品S）", "M4A1突击步枪-棱镜攻势（优品A）", "M4A1突击步枪-棱镜攻势（优品B）", "M4A1突击步枪-棱镜攻势（优品C）"],
+        "MP7冲锋枪-电玩高手S2": ["MP7冲锋枪-电玩高手S2（极品S）", "MP7冲锋枪-电玩高手S2（极品A）", "MP7冲锋枪-电玩高手S2（极品B）", "MP7冲锋枪-电玩高手S2（极品C）", "MP7冲锋枪-电玩高手S2（优品S）", "MP7冲锋枪-电玩高手S2（优品A）", "MP7冲锋枪-电玩高手S2（优品B）", "MP7冲锋枪-电玩高手S2（优品C）"],
+        "KC17突击步枪-造物纪元": ["KC17突击步枪-造物纪元（极品S）", "KC17突击步枪-造物纪元（极品A）", "KC17突击步枪-造物纪元（极品B）", "KC17突击步枪-造物纪元（极品C）", "KC17突击步枪-造物纪元（优品S）", "KC17突击步枪-造物纪元（优品A）", "KC17突击步枪-造物纪元（优品B）", "KC17突击步枪-造物纪元（优品C）"],
+        "SCAR-H战斗步枪-电玩高手": ["SCAR-H战斗步枪-电玩高手（极品S）", "SCAR-H战斗步枪-电玩高手（极品A）", "SCAR-H战斗步枪-电玩高手（极品B）", "SCAR-H战斗步枪-电玩高手（极品C）", "SCAR-H战斗步枪-电玩高手（优品S）", "SCAR-H战斗步枪-电玩高手（优品A）", "SCAR-H战斗步枪-电玩高手（优品B）", "SCAR-H战斗步枪-电玩高手（优品C）"],
+        "Vector冲锋枪-美杜莎": ["Vector冲锋枪-美杜莎（极品S）", "Vector冲锋枪-美杜莎（极品A）", "Vector冲锋枪-美杜莎（极品B）", "Vector冲锋枪-美杜莎（极品C）", "Vector冲锋枪-美杜莎（优品S）", "Vector冲锋枪-美杜莎（优品A）", "Vector冲锋枪-美杜莎（优品B）", "Vector冲锋枪-美杜莎（优品C）"],
+        "K416突击步枪-命运": ["K416突击步枪-命运（极品S）", "K416突击步枪-命运（极品A）", "K416突击步枪-命运（极品B）", "K416突击步枪-命运（极品C）", "K416突击步枪-命运（优品S）", "K416突击步枪-命运（优品A）", "K416突击步枪-命运（优品B）", "K416突击步枪-命运（优品C）"],
+        "QBZ95-1突击步枪-王牌之剑": ["QBZ95-1突击步枪-王牌之剑（极品S）", "QBZ95-1突击步枪-王牌之剑（极品A）", "QBZ95-1突击步枪-王牌之剑（极品B）", "QBZ95-1突击步枪-王牌之剑（极品C）", "QBZ95-1突击步枪-王牌之剑（优品S）", "QBZ95-1突击步枪-王牌之剑（优品A）", "QBZ95-1突击步枪-王牌之剑（优品B）", "QBZ95-1突击步枪-王牌之剑（优品C）"],
+        "AUG突击步枪-气象感应": ["AUG突击步枪-气象感应（极品S）", "AUG突击步枪-气象感应（极品A）", "AUG突击步枪-气象感应（极品B）", "AUG突击步枪-气象感应（极品C）", "AUG突击步枪-气象感应（优品S）", "AUG突击步枪-气象感应（优品A）", "AUG突击步枪-气象感应（优品B）", "AUG突击步枪-气象感应（优品C）"],
+        "腾龙突击步枪-气象感应": ["腾龙突击步枪-气象感应（极品S）", "腾龙突击步枪-气象感应（极品A）", "腾龙突击步枪-气象感应（极品B）", "腾龙突击步枪-气象感应（极品C）", "腾龙突击步枪-气象感应（优品S）", "腾龙突击步枪-气象感应（优品A）", "腾龙突击步枪-气象感应（优品B）", "腾龙突击步枪-气象感应（优品C）"],
+        "ASVal突击步枪-悬赏令": ["ASVal突击步枪-悬赏令（极品S）", "ASVal突击步枪-悬赏令（极品A）", "ASVal突击步枪-悬赏令（极品B）", "ASVal突击步枪-悬赏令（极品C）", "ASVal突击步枪-悬赏令（优品S）", "ASVal突击步枪-悬赏令（优品A）", "ASVal突击步枪-悬赏令（优品B）", "ASVal突击步枪-悬赏令（优品C）"],
+        "250通用机枪-电玩高手S2": ["250通用机枪-电玩高手S2（极品S）", "250通用机枪-电玩高手S2（极品A）", "250通用机枪-电玩高手S2（极品B）", "250通用机枪-电玩高手S2（极品C）", "250通用机枪-电玩高手S2（优品S）", "250通用机枪-电玩高手S2（优品A）", "250通用机枪-电玩高手S2（优品B）", "250通用机枪-电玩高手S2（优品C）"],
     }
 )
 // 输入框清空
@@ -223,11 +223,11 @@ body {
 }
 
 .float-bottom-left-btn {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .page {
