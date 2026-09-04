@@ -121,6 +121,7 @@ const knifeArr = ref([
     { name: '近战武器-尼泊尔-挽歌', name1: '近战-尼泊尔-挽歌', price: 600, picUrl: new URL('@/assets/images/knife/niboer.png', import.meta.url).href },
 ])
 const manArr = ref([
+    { name: '乌鲁鲁狂怒', name1: '乌鲁鲁-狂怒', price: 200, flag: 1, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/kuangnu.png', import.meta.url).href },
     { name: '威龙凌霄戍卫', name1: '威龙-凌霄戍卫', price: 350, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/weilong1.png', import.meta.url).href },
     { name: '红狼蚀金玫瑰', name1: '红狼-蚀金玫瑰', price: 320, flag: 1, ifLink: 0, ifCom: 1, picUrl: new URL('@/assets/images/Character/honglang1.jpg', import.meta.url).href },
     { name: '露娜黑天际线', name1: '露娜-黑·天际线', price: 200, flag: 1, ifLink: 1, ifCom: 0, picUrl: new URL('@/assets/images/Character/luna1.jpg', import.meta.url).href },
