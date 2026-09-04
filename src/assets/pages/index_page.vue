@@ -119,6 +119,7 @@ const knifeArr = ref([
     { name: '近战武器-电锯惊魂', name1: '近战-电锯惊魂', price: 100, picUrl: new URL('@/assets/images/knife/dianju.png', import.meta.url).href },
     { name: '近战武器-坠星者', name1: '近战-坠星者', price: 600, picUrl: new URL('@/assets/images/knife/zhuixingzhe.png', import.meta.url).href },
     { name: '近战武器-尼泊尔-挽歌', name1: '近战-尼泊尔-挽歌', price: 600, picUrl: new URL('@/assets/images/knife/niboer.png', import.meta.url).href },
+    { name: '近战武器-重塑', name1: '近战-重塑', price: 600, picUrl: new URL('@/assets/images/knife/chongsu.png', import.meta.url).href },
 ])
 const manArr = ref([
     { name: '乌鲁鲁狂怒', name1: '乌鲁鲁-狂怒', price: 200, flag: 1, ifLink: 0, ifCom: 0, picUrl: new URL('@/assets/images/Character/kuangnu.png', import.meta.url).href },
@@ -144,6 +145,7 @@ const manArr = ref([
 ])
 const weaponArr = reactive(
 {
+        "MK4冲锋枪-疾光魅影": ["MK4冲锋枪-疾光魅影（极品S）", "MK4冲锋枪-疾光魅影（极品A）", "MK4冲锋枪-疾光魅影（极品B）", "MK4冲锋枪-疾光魅影（极品C）", "MK4冲锋枪-疾光魅影（优品S）", "MK4冲锋枪-疾光魅影（优品A）", "MK4冲锋枪-疾光魅影（优品B）", "MK4冲锋枪-疾光魅影（优品C）"],
         "AKM突击步枪-群星": ["AKM突击步枪-群星（极品S）", "AKM突击步枪-群星（极品A）", "AKM突击步枪-群星（极品B）", "AKM突击步枪-群星（极品C）", "AKM突击步枪-群星（优品S）", "AKM突击步枪-群星（优品A）", "AKM突击步枪-群星（优品B）", "AKM突击步枪-群星（优品C）"],
         "M7系列": ["M7战斗步枪-棱镜攻势S2（极品S）", "M7战斗步枪-棱镜攻势S2（极品A）", "M7战斗步枪-棱镜攻势S2（极品B）", "M7战斗步枪-棱镜攻势S2（极品C）", "M7战斗步枪-棱镜攻势S2（优品S）", "M7战斗步枪-棱镜攻势S2（优品A）", "M7战斗步枪-棱镜攻势S2（优品B）", "M7战斗步枪-棱镜攻势S2（优品C）"],
         "M4A1突击步枪-棱镜攻势": ["M4A1突击步枪-棱镜攻势（极品S）", "M4A1突击步枪-棱镜攻势（极品A）", "M4A1突击步枪-棱镜攻势（极品B）", "M4A1突击步枪-棱镜攻势（极品C）", "M4A1突击步枪-棱镜攻势（优品S）", "M4A1突击步枪-棱镜攻势（优品A）", "M4A1突击步枪-棱镜攻势（优品B）", "M4A1突击步枪-棱镜攻势（优品C）"],
